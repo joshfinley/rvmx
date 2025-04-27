@@ -5,8 +5,9 @@ use core::panic::PanicInfo;
 
 /// This is the function thats gets called on boot
 #[unsafe(no_mangle)]
+#[allow(clippy::empty_loop)]
 pub extern "C" fn _start() -> ! {
-    let test_buffer = 0x0000 as *mut u8;
+    let test_buffer = core::ptr::null_mut::<u8>();
 
     unsafe {
         *test_buffer = 1;
@@ -17,6 +18,7 @@ pub extern "C" fn _start() -> ! {
 }
 
 #[panic_handler]
+#[allow(clippy::empty_loop)]
 fn panic(_info: &PanicInfo) -> ! {
     loop {}
 }
