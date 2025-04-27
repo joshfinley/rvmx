@@ -49,7 +49,7 @@ fn install_hooks() {
             fs::copy(&src, &dest).expect("failed to copy hook");
         }
 
-        println!("Installed {:?}", hook_name);
+        println!("Installed {hook_name:?}");
     }
 }
 
